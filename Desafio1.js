@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 class ProductManager {
     constructor(){
         this.products = [];
@@ -45,6 +47,10 @@ class ProductManager {
 
     getProductById(id) {
         !this.existe(id) ? console.log("Not Found") : console.log(this.existe(id)) 
+    }
+
+    consultarUsuarios(){
+        
     }
 }
 

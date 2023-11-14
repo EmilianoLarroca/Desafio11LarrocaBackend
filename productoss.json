@@ -1,0 +1,38 @@
+[
+  {
+    "title": "titulo10",
+    "description": "descripcion del titulo10",
+    "price": 50000,
+    "thumbnail": "imagen2",
+    "code": "asb1234",
+    "stock": 9,
+    "id": 4
+  },
+  {
+    "title": "titulo1",
+    "description": "descripcion del titulo",
+    "price": 1200,
+    "thumbnail": "imagen1",
+    "code": "asb123",
+    "stock": 10,
+    "id": 1
+  },
+  {
+    "title": "titulo2",
+    "description": "descripcion del titulo2",
+    "price": 1200,
+    "thumbnail": "imagen2",
+    "code": "asb1234",
+    "stock": 9,
+    "id": 2
+  },
+  {
+    "title": "titulo3",
+    "description": "descripcion del titulo3",
+    "price": 1200,
+    "thumbnail": "imagen3",
+    "code": "asb1235",
+    "stock": 5,
+    "id": 3
+  }
+]
