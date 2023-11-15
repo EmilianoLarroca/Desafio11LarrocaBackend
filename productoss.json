@@ -1,14 +1,5 @@
 [
   {
-    "title": "titulo10",
-    "description": "descripcion del titulo10",
-    "price": 50000,
-    "thumbnail": "imagen2",
-    "code": "asb1234",
-    "stock": 9,
-    "id": 4
-  },
-  {
     "title": "titulo1",
     "description": "descripcion del titulo",
     "price": 1200,
@@ -34,5 +25,14 @@
     "code": "asb1235",
     "stock": 5,
     "id": 3
+  },
+  {
+    "title": "titulo4",
+    "description": "descripcion del titulo4",
+    "price": 1200,
+    "thumbnail": "imagen4",
+    "code": "asb1236",
+    "stock": 6,
+    "id": 4
   }
 ]

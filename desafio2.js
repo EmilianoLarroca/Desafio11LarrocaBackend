@@ -66,22 +66,22 @@ class ProductManager {
 
 const productos = new ProductManager();
 
-//Información de los productos que quiero agregar
-// productos.addProduct("titulo1", "descripcion del titulo", 1200, "imagen1", "asb123", 10);
-// productos.addProduct("titulo2", "descripcion del titulo2", 1200, "imagen2", "asb1234", 9);
-// productos.addProduct("titulo3", "descripcion del titulo3", 1200, "imagen3", "asb1235", 5);
-// productos.addProduct("titulo4", "descripcion del titulo4", 1200, "imagen4", "asb1236", 6);
+//1) Información y productos que quiero agregar
+productos.addProduct("titulo1", "descripcion del titulo", 1200, "imagen1", "asb123", 10);
+productos.addProduct("titulo2", "descripcion del titulo2", 500, "imagen2", "asb1234", 9);
+productos.addProduct("titulo3", "descripcion del titulo3", 2500, "imagen3", "asb1235", 5);
+productos.addProduct("titulo4", "descripcion del titulo4", 3700, "imagen4", "asb1236", 6);
 
-//Mostrar los productos - Consultando
+//2) Mostrar los productos - Consultando
 // productos.getProducts();
 
-//Mostrar los productos - Consultando por ID (colocar un numero como parametro)
+//3) Mostrar los productos - Consultando por ID (colocar un numero como parametro)
 // productos.getProductsById();
 
-//Eliminando el producto por ID (colocar un numero como parametro)
+//4) Eliminando el producto por ID (colocar un numero como parametro)
 // productos.deleteProductsById();
 
-//Modificando los productos sin cambiar su ID (eligiendo un ID para pisar el resto de datos)
+//5) Modificando los productos sin cambiar su ID (eligiendo un ID para pisar el resto de datos)
 // productos.updateProducts({
 //     title: 'titulo10',
 //     description: 'descripcion del titulo10',
