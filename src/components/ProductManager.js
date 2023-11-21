@@ -1,6 +1,6 @@
 import {promises as fs} from "fs";
 
-class ProductManager {
+export default class ProductManager {
     constructor() {
         this.patch = "./productoss.json"
         this.productos = []
@@ -64,13 +64,13 @@ class ProductManager {
 
 }
 
-const productos = new ProductManager();
+// const productos = new ProductManager();
 
 //1) Información y productos que quiero agregar
-productos.addProduct("titulo1", "descripcion del titulo", 1200, "imagen1", "asb123", 10);
-productos.addProduct("titulo2", "descripcion del titulo2", 500, "imagen2", "asb1234", 9);
-productos.addProduct("titulo3", "descripcion del titulo3", 2500, "imagen3", "asb1235", 5);
-productos.addProduct("titulo4", "descripcion del titulo4", 3700, "imagen4", "asb1236", 6);
+// productos.addProduct("titulo1", "descripcion del titulo", 1200, "imagen1", "asb123", 10);
+// productos.addProduct("titulo2", "descripcion del titulo2", 500, "imagen2", "asb1234", 9);
+// productos.addProduct("titulo3", "descripcion del titulo3", 2500, "imagen3", "asb1235", 5);
+// productos.addProduct("titulo4", "descripcion del titulo4", 3700, "imagen4", "asb1236", 6);
 
 //2) Mostrar los productos - Consultando
 // productos.getProducts();

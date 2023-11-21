@@ -11,7 +11,7 @@
   {
     "title": "titulo2",
     "description": "descripcion del titulo2",
-    "price": 1200,
+    "price": 500,
     "thumbnail": "imagen2",
     "code": "asb1234",
     "stock": 9,
@@ -20,7 +20,7 @@
   {
     "title": "titulo3",
     "description": "descripcion del titulo3",
-    "price": 1200,
+    "price": 2500,
     "thumbnail": "imagen3",
     "code": "asb1235",
     "stock": 5,
@@ -29,7 +29,7 @@
   {
     "title": "titulo4",
     "description": "descripcion del titulo4",
-    "price": 1200,
+    "price": 3700,
     "thumbnail": "imagen4",
     "code": "asb1236",
     "stock": 6,
