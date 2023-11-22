@@ -5,7 +5,7 @@
   "main": "desafio1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "servidor": "nodemon src/server.js"
+    "servidor": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
