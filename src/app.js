@@ -26,7 +26,7 @@ app.get('/products/:id', async (req, res)=> {
     res.send(productsById)
 })
 
-//SERVIDOR
+// LEVANTANDO SERVIDOR
 const PORT = 8080;
 const servidor = app.listen(PORT, () => {
     console.log(`Express por Local Host ${servidor.address().port}`)
