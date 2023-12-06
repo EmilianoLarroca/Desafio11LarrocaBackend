@@ -27,8 +27,8 @@ app.get('/products/:id', async (req, res)=> {
 })
 
 // LEVANTANDO SERVIDOR
-const PORT = 8080;
-const servidor = app.listen(PORT, () => {
-    console.log(`Express por Local Host ${servidor.address().port}`)
-})
-servidor.on("error", (error) => console.log(`Error del servidor ${servidor}`))
+// const PORT = 8080;
+// const servidor = app.listen(PORT, () => {
+//     console.log(`Express por Local Host ${servidor.address().port}`)
+// })
+// servidor.on("error", (error) => console.log(`Error del servidor ${servidor}`))

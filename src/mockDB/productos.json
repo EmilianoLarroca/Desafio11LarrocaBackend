@@ -1,6 +1,6 @@
 [
   {
-    "title": "titulo1",
+    "title": "Placa de Video AMD",
     "description": "descripcion del titulo1",
     "price": 500,
     "thumbnail": "imagen1",
@@ -9,7 +9,7 @@
     "id": 1
   },
   {
-    "title": "titulo2",
+    "title": "Placa de Video NVIDIA",
     "description": "descripcion del titulo2",
     "price": 500,
     "thumbnail": "imagen2",
@@ -18,7 +18,7 @@
     "id": 2
   },
   {
-    "title": "titulo3",
+    "title": "Memoria RAM 8GB",
     "description": "descripcion del titulo3",
     "price": 1500,
     "thumbnail": "imagen3",
@@ -27,7 +27,7 @@
     "id": 3
   },
   {
-    "title": "titulo4",
+    "title": "Memoria RAM 16GB",
     "description": "descripcion del titulo4",
     "price": 4500,
     "thumbnail": "imagen4",
@@ -36,7 +36,7 @@
     "id": 4
   },
   {
-    "title": "titulo5",
+    "title": "Teclados RGB",
     "description": "descripcion del titulo5",
     "price": 2100,
     "thumbnail": "imagen5",

@@ -1,37 +1,27 @@
 const { Router } = require('express') 
+const ProductManager = require('../managers/productManager.js')
 
 const router = Router()
+const path = './src/mockDB/productos.json'
+const product = new ProductManager(path);
 
-const productMock = [
-    {id: "1", name: "Hamburguesa", price: "100"},
-    {id: "2", name: "Panchos", price: "50"},
-    {id: "3", name: "Papas fritas", price: "200"},
-    {id: "4", name: "Hamburguesa completa", price: "175"},
-    {id: "5", name: "Combo completo", price: "350"}
-]
 
-router.get('/', (req, res) => {
-    res.render('index', {
-        title: "Mercado Online",
-        name: "Emiliano",
-        style: "index.css"
-    })
+//Trayendo productos con handlebars
+router.get("/", async (req, res) => {
+    let allProducts = await product.getProducts()
+    res.render("index", {
+    title: "Productos",
+    productos: allProducts})
 })
 
-router.get('/prod', (req, res) => {
-    const userMock = {
-        title: "Productos",
-        name: "Emiliano",
-        role: "admin"
-    }
+//Trayendo productos en tiempo real
+router.get('/realtimeproducts', async (req, res)=> {
+    let allProducts = await product.getProducts()
 
-    res.render('products', {
-        title: userMock.title,
-        name: userMock.name,
-        isAdmin: userMock.role === 'admin',
-        products: productMock,
-        style: "products.css"
-    })
+    res.render("realTimeProducts", {
+        title: "Productos en Tiempo Real",
+        allProducts})
 })
+
 
 module.exports = router
