@@ -22,7 +22,8 @@ class ProductManager {
     //Agregando productos
     addProduct = async (product) => {
         let productOld = await this.readProducts()
-        let productAll = [...productOld, product]
+        let id = productOld[productOld.legth-1].id + 1
+        let productAll = [...productOld, {...product, id}]
         await this.writeFile(productAll)
         return "Producto Agregado"
 }
