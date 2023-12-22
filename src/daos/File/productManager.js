@@ -21,7 +21,11 @@ class ProductManager {
     //Agregando productos
     addProduct = async (product) => {
         let productOld = await this.readProducts()
+<<<<<<< HEAD:src/daos/File/productManager.js
         let id = productOld[productOld.legth-1] + 1
+=======
+        let id = productOld[productOld.legth-1].id + 1
+>>>>>>> bf7c7fb6d2bad0b8ffd421b22da3be7230989583:src/managers/productManager.js
         let productAll = [...productOld, {...product, id}]
         await this.writeFile(productAll)
         return "Producto Agregado"
