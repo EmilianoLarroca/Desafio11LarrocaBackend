@@ -1,5 +1,4 @@
 const fs = require('node:fs')
-// import {promises as fs} from 'fs'
 
 const path = './src/mockDB/productos.json'
 
@@ -22,7 +21,8 @@ class ProductManager {
     //Agregando productos
     addProduct = async (product) => {
         let productOld = await this.readProducts()
-        let productAll = [...productOld, product]
+        let id = productOld[productOld.legth-1] + 1
+        let productAll = [...productOld, {...product, id}]
         await this.writeFile(productAll)
         return "Producto Agregado"
 }

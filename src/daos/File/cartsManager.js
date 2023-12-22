@@ -1,6 +1,5 @@
 const fs = require('node:fs')
 const ProductManager = require('./productManager.js')
-// import {promises as fs} from 'fs'
 
 const path = './src/mockDB/carts.json'
 const todosLosProductos = new ProductManager

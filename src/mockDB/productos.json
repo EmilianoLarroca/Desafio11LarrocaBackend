@@ -43,5 +43,48 @@
     "code": "abc127",
     "stock": 13,
     "id": 5
+  },
+  {
+    "title": "Placa de Video Nueva",
+    "price": "123.500",
+    "description": "Este producto es de prueba",
+    "thumnbail": "Sin imagen",
+    "code": "abcde112323",
+    "stock": 100
+  },
+  {
+    "title": "Placa de Video Nueva2",
+    "price": "200.000",
+    "description": "Este producto es de prueba",
+    "thumnbail": "Sin imagen",
+    "code": "abcde112323",
+    "stock": 100,
+    "id": null
+  },
+  {
+    "title": "Placa de Video Nueva3",
+    "price": "500.000",
+    "description": "Este producto es de prueba",
+    "thumnbail": "Sin imagen",
+    "code": "abcde112323",
+    "stock": 100,
+    "id": null
+  },
+  {
+    "title": "Placa de Video Nueva3",
+    "price": "240.000",
+    "description": "Este producto es de prueba",
+    "thumnbail": "Sin imagen",
+    "code": "abcde112323",
+    "stock": 100
+  },
+  {
+    "title": "Emiliano",
+    "price": "123",
+    "description": "Este producto es de prueba",
+    "thumnbail": "Sin imagen",
+    "code": "abcde112323",
+    "stock": 100,
+    "id": null
   }
 ]

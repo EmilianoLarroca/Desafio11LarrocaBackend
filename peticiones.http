@@ -1,0 +1,33 @@
+GET http://localhost:8080/api/users
+
+
+###
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+    "first_name": "Emiliano",
+    "last_name": "Larroca",
+    "email": "e@gmail.com"
+}
+
+###
+PUT http://localhost:8080/api/users/657fc7163eade5e1e2396c59
+Content-Type: application/json
+
+{
+    "first_name": "Emi",
+    "last_name": "Larroca",
+    "email": "emiliano@gmail.com"
+}
+
+###
+DELETE http://localhost:8080/api/users/657fc7163eade5e1e2396c59
+Content-Type: application/json
+
+
+
+//PRODUCTS
+
+###
+GET http://localhost:8080/api/products

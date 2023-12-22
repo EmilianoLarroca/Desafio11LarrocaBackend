@@ -1,9 +1,13 @@
 const { Router } = require('express') 
-const ProductManager = require('../managers/productManager.js')
+// const ProductManager = require('../daos/File/productManager.js')
+const { ProductDaoMongo } = require('../daos/Mongo/productManagerMongo.js')
+const { MessageManager } = require('../daos/Mongo/messagesManagerMongo.js')
 
 const router = Router()
-const path = './src/mockDB/productos.json'
-const product = new ProductManager(path);
+// const path = './src/mockDB/productos.json'
+const product = new ProductDaoMongo()
+const chat = new MessageManager()
+
 
 
 //Trayendo productos con handlebars

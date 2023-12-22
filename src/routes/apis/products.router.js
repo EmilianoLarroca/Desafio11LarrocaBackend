@@ -1,53 +1,77 @@
 const { Router } = require('express')
-const ProductManager = require('../../managers/productManager')
+const { ProductDaoMongo } = require('../../daos/Mongo/productManagerMongo.js')
+
+//Esto era FS
+// const ProductManager = require('../../daos/File/productManager')
+// const productsService = new ProductManager() // manager viejo
 
 const router = Router()
-const productsService = new ProductManager()
+const productsService = new ProductDaoMongo()
 
 router
     //Buscando producto 
     .get('/', async (req, res) => {
-        const products = await productsService.getProducts()
-        res.send({
-            status: "success",
-            payload: products
+        try {
+            const products = await productsService.getProducts()
+            res.send({
+                status: "success",
+                payload: products
         })
-            
-} )
+        } catch (error) {
+            console.log(error)
+    }       
+})
 
     //Buscando producto por ID
     .get('/:pid', async (req, res) => {
-        const pid = parseInt(req.params.pid)
-        const product = await productsService.getProductsById(pid)
-        res.send({
-                status: 'sucess',
-                payload: product
+        try {
+            const pid = parseInt(req.params.pid)
+            const product = await productsService.getProductsById(pid)
+                res.send({
+                    status: 'sucess',
+                    payload: product
             }) 
-        }
+        } catch (error) {
+            console.log(error)
+    }  
+}
             
 )
 
     //Enviando, creando producto por ID
     .post('/', async (req, res) => {
-        const newProduct = req.body
-            res.send(await productsService.addProduct(newProduct))      
+        try {
+            const newProduct = req.body
+                res.send(await productsService.addProduct(newProduct))
+        } catch (error) {
+            console.log(error)
+        }
+              
 } )
 
     //Modificando producto por ID
     .put('/:pid', async (req, res) => {
-        const pid = parseInt(req.params.pid)
-        const actualizandoProduct = req.body
-        res.send(await productsService.updateProducts(pid, actualizandoProduct))
+        try {
+            const pid = parseInt(req.params.pid)
+            const actualizandoProduct = req.body
+                res.send(await productsService.updateProducts(pid, actualizandoProduct))
+        } catch (error) {
+            console.log(error)
+    }
 } )
 
     //Eliminando producto por ID
     .delete('/:pid', async (req, res) => {
-        const pid = parseInt(req.params.pid)
-        const eliminandoProduct = await productsService.deleteProductsById(pid)
-        res.send({
-                status: 'sucess',
-                payload: eliminandoProduct
+        try {
+            const pid = parseInt(req.params.pid)
+            const eliminandoProduct = await productsService.deleteProductsById(pid)
+                res.send({
+                    status: 'sucess',
+                    payload: eliminandoProduct
             }) 
-        })
+        } catch (error) {
+            console.log(error)
+    }
+})
 
 module.exports = router

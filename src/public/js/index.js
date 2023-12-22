@@ -2,10 +2,10 @@ const socket = io()
 
 socket.emit('recibirMensajeCliente', 'estoy usando scoket')
 
-let productPost = document.getProductsById("productPost")
-let productInputTitle = document.getProductsById("productInputTitle")
-let productInputPrice = document.getProductsById("productInputPrice")
-let btnProduct = document.getProductsById("btnProduct")
+let productPost = document.getElementById("productPost")
+let productInputTitle = document.getElementById("productInputTitle")
+let productInputPrice = document.getElementById("productInputPrice")
+let btnProduct = document.getElementById("btnProduct")
 
 btnProduct.addEventListener("click", function () {
     socket.emit("realTimeProducts", {
@@ -19,13 +19,12 @@ btnProduct.addEventListener("click", function () {
 
 })
 
-
 socket.on("listaDeProductos", (data) => {
     nuevaListaDeProd(data)
 })
 
 function nuevaListaDeProd(listadoProductos) {
-    const listProducts = document.getProductsById("listProducts")
+    const listProducts = document.getElementById("listProducts")
 let li = ""
 listadoProductos.forEach((el)=> {
     li += `<li>

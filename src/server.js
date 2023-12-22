@@ -3,14 +3,18 @@ const productsRouter = require('./routes/apis/products.router.js')
 const cartsRouter = require('./routes/apis/carts.router.js')
 const viewsRouter = require('./routes/views.router.js')
 const handlebars = require('express-handlebars')
+const userRouter = require('./routes/apis/users.router.js')
 const { Server } = require('socket.io')
-const ProductManager = require('./managers/productManager')
-
+// const ProductManager = require('./daos/File/productManager.js')
+const { ProductDaoMongo } = require('./daos/Mongo/productManagerMongo.js')
+const { connectDb } = require('./daos/config/configServer.js')
 
 
 const app = express()
 const PORT = 8080
-const product = new ProductManager();
+const product = new ProductDaoMongo();
+connectDb()
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -35,12 +39,12 @@ app.use('/views', viewsRouter)
 //Carrito
 app.use('/api/carts', cartsRouter)
 
+//Usuarios
+app.use('/api/users', userRouter)
 
 
-//Levantando Servidor-este es antiguo-
-// const serverHttp = app.listen(8080, () => {
-//     console.log('Servidor Funcionando!')
-// })
+
+
 
 app.use(( err, req, res, next)=>{
     console.error(err.stack)
@@ -65,24 +69,3 @@ socketServer.on('connection', async (socket) => {
     })
 })
 
-
-
-
-// const productosWebSocket = new ProductManager
-// socketServer.on('connection', io => {
-//     console.log('nuevo cliente conectado')
-
-
-
-    // socket.on('recibirMensajeCliente', data => {
-    //     console.log(data)
-    // })
-
-    // socket.emit('solo-para-el-actual', 'Este lo debe recibir solo el actual')
-
-    // socket.broadcast.emit('para-todos-menos-el-actual', 'Este evento lo vera todos los conectados')
-
-    //ESTE SIRVE PARA ENVIAR PRODUCTOS
-    // socketServer.emit('todosLosProductos', 'es para todos')
-
-// })
