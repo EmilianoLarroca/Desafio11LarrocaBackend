@@ -1,26 +1,87 @@
 const { Router } = require('express')
-const CartManager = require("../../daos/File/cartsManager.js") 
+const { cartModel } = require('../../models/carts.model.js')
+const { CartDaoMongo } = require('../../daos/Mongo/cartDaoMongo.js')
+// const CartManager = require("../../daos/File/cartsManager.js") 
 
 const router = Router()
-const carts = new CartManager
+const carrito = new CartDaoMongo
 
-router.post("/", async (req, res) => {
-    res.send(await carts.addCarts())
+router
+    .get('/', async (req, res) => {
+        const carts = await cartManager.getCarts()
+        res.send({
+            status: "succes",
+            carts: carts
+    })
 })
 
-router.get("/", async (req, res) => {
-    res.send(await carts.readCarts())
-})
+// .get('/', async (req, res) => {
+//     let { populate } = req.query;
+//     populate = populate || true
+//     const resp = await carrito.getCarts(null, populate);
+  
+//     if (typeof resp === 'string') {
+//       res.status(400).json({
+//         status: 'error',
+//         data: resp,
+//       });
+//     } else {
+//       res.status(200).json({
+//         status: 'ok',
+//         data: resp,
+//       });
+//     }
+//   })
 
-router.get("/:pid", async (req, res) => {
-    const pid = parseInt(req.params.pid)
-    res.send(await carts.getCarritoById(pid))
-})
+    //Llamar carrito de productos
+    .get('/:pid', async (req, res)=> {
+        const {pid} = req.params
+        const cart = await cartModel.find({_id: pid})
+        res.send({
+            status: 'success',
+            payload: cart
+        })
+    })
 
-router.post("/:cid/products/:pid", async (req, res) => {
-    const cartPid = parseInt(req.params.cid)
-    const productPid = parseInt(req.params.pid)
-    res.send(await carts.addProductInCart(cartPid, productPid))
-})
+    .post('/', async (req, res)=> {
+        const newCart = req.body
+        console.log(req)
+        const result = await cartModel.create(newCart)
+        res.send({
+            status: 'success',
+            payload: result
+        })
+    })
+
+    .put('/', async (req, res)=> {
+
+    })
+
+    .delete('/:cid'), async (req, res)=> {
+        
+    }
+    
+    
+    
+// const carts = new CartManager
+
+// router.post("/", async (req, res) => {
+//     res.send(await carts.addCarts())
+// })
+
+// router.get("/", async (req, res) => {
+//     res.send(await carts.readCarts())
+// })
+
+// router.get("/:pid", async (req, res) => {
+//     const pid = parseInt(req.params.pid)
+//     res.send(await carts.getCarritoById(pid))
+// })
+
+// router.post("/:cid/products/:pid", async (req, res) => {
+//     const cartPid = parseInt(req.params.cid)
+//     const productPid = parseInt(req.params.pid)
+//     res.send(await carts.addProductInCart(cartPid, productPid))
+// })
 
 module.exports = router

@@ -39,14 +39,31 @@ router
 )
 
     //Enviando, creando producto por ID
-    .post('/', async (req, res) => {
-        try {
-            const newProduct = req.body
-                res.send(await productsService.addProduct(newProduct))
-        } catch (error) {
+//     .post('/', async (req, res) => {
+//         try {
+//             const newProduct = req.body
+//                 res.send(await productsService.addProduct(newProduct))
+
+//             const result = await productsService.addProduct(newProduct)
+
+//             res.send({status: 'success', payload: result})
+//         } catch (error) {
+//             console.log(error)
+//         }
+              
+// } )
+
+.post('/', async (req, res) => {
+    try {
+        const newProduct = req.body
+            if(!newProduct.title || !newProduct.price) {
+                return res.status(400).send({status: 'error', error: "Faltan datos"})
+            }
+            const result = await productsService.addProduct(newProduct)
+            res.send({status: 'success', payload: result})
+        } catch(error){
             console.log(error)
         }
-              
 } )
 
     //Modificando producto por ID

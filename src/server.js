@@ -1,6 +1,7 @@
 const express = require('express') 
 const productsRouter = require('./routes/apis/products.router.js')
 const cartsRouter = require('./routes/apis/carts.router.js')
+const ordersRouter = require('./routes/apis/orders.router.js')
 const viewsRouter = require('./routes/views.router.js')
 const handlebars = require('express-handlebars')
 const userRouter = require('./routes/apis/users.router.js')
@@ -18,7 +19,10 @@ connectDb()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(express.static(__dirname + '/public'))
+
+// app.use(express.static(__dirname + '/public'))
+//Archivos staticos
+// app.use('/', express.static(__dirname + "/public"))
 
 //Handlebars (Motor de Plantilla)
  app.engine('hbs', handlebars.engine({
@@ -27,22 +31,16 @@ app.use(express.static(__dirname + '/public'))
  app.set('view engine', 'hbs')
  app.set('views', __dirname + '/views')
 
-//Archivos staticos
-app.use('/', express.static(__dirname + "/public"))
-
 //Productos
 app.use('/api/products', productsRouter)
-
 //Views
 app.use('/views', viewsRouter)
-
 //Carrito
 app.use('/api/carts', cartsRouter)
-
 //Usuarios
 app.use('/api/users', userRouter)
-
-
+//Ordenes
+app.use('/api/orders', ordersRouter)
 
 
 
@@ -53,7 +51,7 @@ app.use(( err, req, res, next)=>{
 
 const serverHttp = app.listen(PORT,err =>{
     if (err)  console.log(err)
-    console.log(`Escuchando en el puerto ${PORT}`)
+    console.log(`Escuchando puerto http://localhost:${PORT}/views `)
 })
 
 // Servidor WebSocket

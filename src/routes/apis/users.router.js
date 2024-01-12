@@ -6,8 +6,14 @@ const router = Router()
 
 router.get('/', async (req, res) =>{
     try {
-        const users = await usersModel.find({})
-         res.send(users)
+        
+        // const users = await usersModel.find({}).explain('executionStats')
+        //Filtrar cantidad de usuarios
+        // const users = await usersModel.find({}).limit(50)
+
+        //Filtrando usuarios femeninos y paginando (limitando 50 usuarios, posicionandose en la pagina 1)
+        const users = await usersModel.paginate({gender: 'Female'}, {limit: 50, page: 1})
+        res.send(users)
     } catch(error) {
         console.log(error)
     }
@@ -22,7 +28,8 @@ router.post('/', async (req, res) =>{
         const result = await usersModel.create({
             first_name,
             last_name,
-            email
+            email,
+            gender
         })
         res.status(201).send({ 
             status: 'success',
