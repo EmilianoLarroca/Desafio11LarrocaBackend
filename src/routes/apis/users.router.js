@@ -3,7 +3,7 @@ const { usersModel } = require('../../models/users.model')
 
 const router = Router()
 
-
+//http://localhost:8080/views/users?numPage=1 (Asi se ve la paginacion)
 router.get('/', async (req, res) =>{
     try {
         

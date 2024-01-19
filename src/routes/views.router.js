@@ -3,6 +3,7 @@ const { Router } = require('express')
 const { ProductDaoMongo } = require('../daos/Mongo/productManagerMongo.js')
 const { MessageManager } = require('../daos/Mongo/messagesManagerMongo.js')
 const { usersModel } = require('../models/users.model.js')
+const { authetication } = require('../middlewars/atuh.middlewars.js')
 
 const router = Router()
 // const path = './src/mockDB/productos.json'
@@ -28,7 +29,7 @@ router.get('/realtimeproducts', async (req, res)=> {
 })
 
 //Vistas de Usuarios HBS
-router.get('/users', async(req, res)=>{
+router.get('/users', authetication, async(req, res)=>{
     const { numPage, limit=10 } = req.query
     const {
         docs,
@@ -46,6 +47,14 @@ router.get('/users', async(req, res)=>{
         nextPage,
         page
     })
+})
+
+router.get('/register', async (req, res)=> {
+    res.render('register')
+})
+
+router.get('/login', async (req, res)=> {
+    res.render('login')
 })
 
 
