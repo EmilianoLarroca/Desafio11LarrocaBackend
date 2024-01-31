@@ -58,3 +58,19 @@ Content-Type: : application/json
 
 ###
 GET http://localhost:8080/api/carts/659df1782f8baeb102cf50e4
+
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "email": "emi@emi2.com.ar",
+    "password": "1234"
+}
+
+
+###
+GET http://localhost:8080/api/sessions/current
+Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJfaWQiOiI2NWIxN2ZlMmQ0ZWM1NDVjYjM1MGE1ZmQiLCJmaXJzdF9uYW1lIjoiZWVlIiwibGFzdF9uYW1lIjoiZWVlIiwiZW1haWwiOiJlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDhTYm14RXZnZFczVzVqa3FScHcwNXVkeDJzazNaVVZudXRFZWY0Qlc3YXNzcFExWjA0QjMyIiwicm9sZSI6InVzZXIiLCJfX3YiOjB9LCJyb2xlIjoidXNlciIsImlhdCI6MTcwNjEzMTYzOCwiZXhwIjoxNzA2MjE4MDM4fQ.aYzrztpXKUil-3yYEti5XqNFuSgZwCm0QOjj3RHZaJI

@@ -1,38 +1,63 @@
 const passport = require('passport')
 const local = require('passport-local')
 // const { usersModel } = require('../../models/users.model.js')
-const { createHash, isValidPassword } = require('../../utils/hashPassword.js')
+// const { createHash, isValidPassword } = require('../../utils/hashPassword.js')
 const UserDaoMongo = require('../Mongo/userDaoMongo.js')
-
+const GithubStrategy = require('passport-github2')
+const jwt = require('passport-jwt')
 
 const LocalStrategy = local.Strategy
-const userService = new UserDaoMongo
+const JWTStrategy = jwt.Strategy
+const ExtractJWT = jwt.ExtractJwt
+const userService = new UserDaoMongo()
 
 exports.initializePassport = () => {
-    //Configurando un middleware
-    passport.use('register', new LocalStrategy({
-        passReqToCallback: true,
-        usernameField: 'email'
-    }, async (req, username, password, done) => {
+    //Metodo para extraer el token
+    const cookieExtractor = req => {
+        let token = null
+        if (req && req.cookies) {
+            token = req.cookies['token']
+        }
+        return token
+        
+    }
+    // una estrategia es un middleware
+
+    passport.use('jwt', new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        secretOrKey: 'CoderSecretoJsonWebToken'
+    }, async (jwt_payload, done) => {
         try {
-            const {first_name, last_name, email} = req.body
-            let userFound = await userService.getUsersBy({email: username})
-            if(userFound) return done(null, false)
-
-            let newUser = {
-                first_name,
-                last_name,
-                email: username,
-                password: createHash(password)
-            }
-            let result = await userService.createUser(newUser)
-            return done(null, result)
-
+            return done(null, jwt_payload)
         } catch (error) {
-            return done('Error al crear el usuario'+error)
+            return done(error)
         }
     }))
-}
+
+
+    passport.use('github', new GithubStrategy({
+        clientID: 'Iv1.df6f879cafe5d467',
+        clientSecret: 'f444a27b2b42b604b424f8a1f2cda01b69214913',
+        callbackURL: 'http://localhost:8080/api/sessions/githubcallback'
+    }, async (accessToken, refreshToken, profile, done)=> {
+        try {
+            console.log(profile)
+            let user = await userService.getUsersBy({email: profile._json.email})
+            if(!user) {
+                let userNew = {
+                    first_name: profile.username,
+                    last_name: profile.username,
+                    email: profile._json.email,
+                    password: '1234'
+                }
+                let result = await userService.createUser(userNew)
+                return done(null, result)
+            }
+            done(null, user)
+        } catch (error) {
+            return done(error)
+        }
+    }))
 
 //Guarda y recuperar credenciales del usuario
 passport.serializeUser((user, done)=>{
@@ -41,22 +66,5 @@ passport.serializeUser((user, done)=>{
 passport.deserializeUser(async (id, done) => {
     let user = await userService.getUsersBy({_id: id})
     done(null, user)
-})
-
-passport.use('login', new LocalStrategy({
-    usernameField: 'email'
-}, async (username, password, done) => {
-    try {
-        const user = await userService.getUsersBy({email: username})
-        if(!user) {
-            console.log('User no existe')
-            return done(null, false)
-        }
-        if(!isValidPassword(password, {password})) return done(null, false)
-        return done(null, user)
-    } catch (error) {
-        return done(error)
-    }
-}))
-
-
+    })
+}

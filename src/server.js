@@ -23,32 +23,21 @@ const { initializePassport } = require('./daos/config/passport.config.js')
 
 const app = express()
 const PORT = 8080
-const product = new ProductDaoMongo();
-connectDb()
 
+const product = new ProductDaoMongo();
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
-//Persistencia de session con MONGO
-app.use(session({
-    store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://emixlarroca05:pxKdSVcgNezuW7xd@cluster0.jdsonmm.mongodb.net/ecommerce?retryWrites=true&w=majority',
-        mongoOptions: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        },
-        ttl: 1500000000
-    }),
-    secret: 'secretCoder',
-    resave: true,
-    saveUninitialized: true
-}))
+app.use(cookieParser('p4l4br4S3cr3t4'))
 
 //middlewars de passport
-initializePassport
+initializePassport()
 app.use(passport.initialize())
-app.use(passport.session())
+//Inicio de sesion con GITHUB
+app.use(session({
+    secret: 'p4l4br4S3cr3t4'
+}))
+
 
 // app.use(express.static(__dirname + '/public'))
 //Archivos staticos
@@ -60,25 +49,28 @@ app.use(passport.session())
  }))
  app.set('view engine', 'hbs')
  app.set('views', __dirname + '/views')
+ connectDb()
 
-
+app.use('/', viewsRouter) //Views
 app.use('/api/products', productsRouter) //Productos
-app.use('/views', viewsRouter) //Views
 app.use('/api/carts', cartsRouter) //Carrito
 app.use('/api/users', userRouter) //Usuarios (CRUD de user)
 app.use('/api/orders', ordersRouter) //Ordenes
 app.use('/api/sessions', sessionRouter) //Cookies (Login - Register - Logout)
-app.use(cookieParser('p4l4br4S3cr3t4'))
-
+//Cualquier ruta que no este definida, te lleva a esta ruta (COMODIN se le llama a este ruteo)
+app.use('*', (req, res)=>{
+    res.status(404).send('¡No existe la ruta buscada! "Ingrese nuevamente o corrobore los datos"')
+})
 
 app.use(( err, req, res, next)=>{
     console.error(err.stack)
     res.status(500).send('error de server')
 })
 
+
 const serverHttp = app.listen(PORT,err =>{
     if (err)  console.log(err)
-    console.log(`Escuchando puerto http://localhost:${PORT}/views `)
+    console.log(`Escuchando puerto http://localhost:${PORT}/ `)
 })
 
 // Servidor WebSocket
