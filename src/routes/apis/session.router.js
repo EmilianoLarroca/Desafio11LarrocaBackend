@@ -34,7 +34,7 @@ router.post('/register', async (req, res)=>{
         httpOnly: true
     }).json({
         status: 'success',
-        message: 'Logueo correcto'
+        message: 'Usuario creado, ¡Bienvenido!'
     })
 })
 

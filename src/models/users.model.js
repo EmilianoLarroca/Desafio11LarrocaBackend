@@ -4,6 +4,10 @@ const mongoosePaginate = require('mongoose-paginate-v2')
 const usersCollection = 'Usuarios'
 
 const userSchema = Schema({
+    fullname: {
+        type: String,
+        required: true
+    },
     first_name: {
         type: String,
         index: true,

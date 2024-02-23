@@ -5,24 +5,24 @@ class ProductDaoMongo {
         this.model = productModel
     }
 
-    async getProducts(){
-        return await this.model.find().lean()
+    async get(){
+        return await this.model.find({}).lean()
     }
 
-    async getProduct(pid){
-        return await this.model.findById({_id: pid})
+    async getBy(filter){
+        return await this.model.findOne(filter)
     }
 
-    async addProduct(newProduct){
+    async create(newProduct){
         return await this.model.create(newProduct)
     }
 
-    async updateProduct(pid, productToUpdate){
-        return this.model.findByIdAndUpdate({_id: pid, productToUpdate})
+    async update(pid, productToUpdate){
+        return this.model.findByIdAndUpdate({_id: pid}, productToUpdate, {new: true})
     }
 
-    async deleteProduct(pid){
-        return this.model.findByIdAndDelete(pid)
+    async delete(pid){
+        return this.model.findByIdAndDelete({_id: pid}, {new: true})
     }
 
 }

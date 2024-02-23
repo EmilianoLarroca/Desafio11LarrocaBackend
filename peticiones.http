@@ -33,18 +33,20 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/api/products
 
+###
+GET http://localhost:8080/api/products/65d3fa49ff88d2b237ddfb6e
 
 
 ###
 POST http://localhost:8080/api/products
-Content-Type: : application/json
+Content-Type:  application/json
 
 {
-    "title": "producto1",
-    "category": "fruta",
+    "title": "producto2",
+    "price": 50,
+    "category": "verdura",
     "stock": 5,
-    "price": 23,
-    "thumbnail": "imagen",
+    "thumbnail": "imagen2",
     "IsActive": "true"
 }
 

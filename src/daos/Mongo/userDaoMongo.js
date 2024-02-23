@@ -5,17 +5,17 @@ class UserDaoMongo {
         this.usersModel = usersModel
     }
 
-    getUsersPaginate = async (limit=10, page=1) => await this.usersModel.paginate({}, {limit, page, lean: true})
+    // getUsersPaginate = async (limit=10, page=1) => await this.usersModel.paginate({}, {limit, page, lean: true})
 
-    getUsers = async () => await this.usersModel.find({})
+    get = async () => await this.usersModel.find({})
 
-    getUsersBy = async (filter) => await this.usersModel.findOne(filter)
+    getBy = async (filter) => await this.usersModel.findOne(filter)
 
-    createUser = async (newUser) => await this.usersModel.create(newUser)
+    create = async (newUser) => await this.usersModel.create(newUser)
 
-    updateUser = async (uid, userUpdate) => await this.usersModel.findOneAndUpdate({_id: uid}, userUpdate)
+    update = async (uid, userUpdate) => await this.usersModel.findOneAndUpdate({_id: uid}, userUpdate)
 
-    deleteUser = async (uid) => await this.usersModel.findOneAndDelete({_id: uid})
+    delete = async (uid) => await this.usersModel.findOneAndDelete({_id: uid})
 
 }
 

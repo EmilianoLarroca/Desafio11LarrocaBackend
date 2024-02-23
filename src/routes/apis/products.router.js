@@ -1,94 +1,22 @@
 const { Router } = require('express')
-const { ProductDaoMongo } = require('../../daos/Mongo/productManagerMongo.js')
-
-//Esto era FS
-// const ProductManager = require('../../daos/File/productManager')
-// const productsService = new ProductManager() // manager viejo
+const ProductController = require('../../controllers/products.controller')
 
 const router = Router()
-const productsService = new ProductDaoMongo()
+const productController = new ProductController
 
 router
     //Buscando producto 
-    .get('/', async (req, res) => {
-        try {
-            const products = await productsService.getProducts()
-            res.send({
-                status: "success",
-                payload: products
-        })
-        } catch (error) {
-            console.log(error)
-    }       
-})
+    .get('/', productController.getProducts)
 
     //Buscando producto por ID
-    .get('/:pid', async (req, res) => {
-        try {
-            const pid = parseInt(req.params.pid)
-            const product = await productsService.getProductsById(pid)
-                res.send({
-                    status: 'sucess',
-                    payload: product
-            }) 
-        } catch (error) {
-            console.log(error)
-    }  
-}
-            
-)
+    .get('/:pid', productController.getProduct)
 
-    //Enviando, creando producto por ID
-//     .post('/', async (req, res) => {
-//         try {
-//             const newProduct = req.body
-//                 res.send(await productsService.addProduct(newProduct))
-
-//             const result = await productsService.addProduct(newProduct)
-
-//             res.send({status: 'success', payload: result})
-//         } catch (error) {
-//             console.log(error)
-//         }
-              
-// } )
-
-.post('/', async (req, res) => {
-    try {
-        const newProduct = req.body
-            if(!newProduct.title || !newProduct.price) {
-                return res.status(400).send({status: 'error', error: "Faltan datos"})
-            }
-            const result = await productsService.addProduct(newProduct)
-            res.send({status: 'success', payload: result})
-        } catch(error){
-            console.log(error)
-        }
-} )
+    .post('/', productController.createProduct)
 
     //Modificando producto por ID
-    .put('/:pid', async (req, res) => {
-        try {
-            const pid = parseInt(req.params.pid)
-            const actualizandoProduct = req.body
-                res.send(await productsService.updateProducts(pid, actualizandoProduct))
-        } catch (error) {
-            console.log(error)
-    }
-} )
+    .put('/:pid', productController.updateProduct)
 
     //Eliminando producto por ID
-    .delete('/:pid', async (req, res) => {
-        try {
-            const pid = parseInt(req.params.pid)
-            const eliminandoProduct = await productsService.deleteProductsById(pid)
-                res.send({
-                    status: 'sucess',
-                    payload: eliminandoProduct
-            }) 
-        } catch (error) {
-            console.log(error)
-    }
-})
+    .delete('/:pid', productController.deleteProduct)
 
 module.exports = router

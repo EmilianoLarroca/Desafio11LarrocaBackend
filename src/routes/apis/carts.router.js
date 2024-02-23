@@ -8,7 +8,7 @@ const carrito = new CartDaoMongo
 
 router
     .get('/', async (req, res) => {
-        const carts = await cartManager.getCarts()
+        const carts = await carrito.getCarts()
         res.send({
             status: "succes",
             carts: carts

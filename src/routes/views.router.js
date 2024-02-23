@@ -13,7 +13,7 @@ const chat = new MessageManager()
 
 //Trayendo productos con handlebars
 router.get("/", async (req, res) => {
-    let allProducts = await product.getProducts()
+    let allProducts = await product.get()
     res.render("index", {
     title: "Productos",
     productos: allProducts})
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
 //Trayendo productos en tiempo real
 router.get('/realtimeproducts', async (req, res)=> {
-    let allProducts = await product.getProducts()
+    let allProducts = await product.getBy()
 
     res.render("realTimeProducts", {
         title: "Productos en Tiempo Real",
