@@ -16,9 +16,10 @@ const { initializePassport } = require('./daos/config/passport.config.js')
 //Routes
 const appRouter = require('./routes/indexRoutes.js')
 const cors = require('cors')
+const { handleError } = require('./middlewars/error/handlleError.js')
+const { addLogger, logger } = require('./utils/logger.js')
 
 const app = express()
-const PORT = configObject.PORT
 
 const product = new ProductDaoMongo();
 
@@ -30,6 +31,7 @@ app.use(cors())
 //middlewars de passport
 initializePassport()
 app.use(passport.initialize())
+
 //Inicio de sesion con GITHUB
 app.use(session({
     secret: 'p4l4br4S3cr3t4'
@@ -37,8 +39,11 @@ app.use(session({
 
 
 // app.use(express.static(__dirname + '/public'))
-//Archivos staticos
-// app.use('/', express.static(__dirname + "/public"))
+
+// Archivos staticos
+app.use('/', express.static(__dirname + "/public"))
+
+
 
 //Handlebars (Motor de Plantilla)
  app.engine('hbs', handlebars.engine({
@@ -48,25 +53,32 @@ app.use(session({
  app.set('views', __dirname + '/views')
  connectDb()
 
+
+app.use(addLogger)
 app.use(appRouter)
+app.use(handleError)
 
+const PORT = configObject.PORT
 
+const appListen = () => {
+    return app.listen(PORT,err =>{
+        if (err)  logger.error(err)
+            logger.info(`Escuchando puerto http://localhost:${PORT}`)
+    })
+}
 
-const serverHttp = app.listen(PORT,err =>{
-    if (err)  console.log(err)
-    console.log(`Escuchando puerto http://localhost:${PORT}/ `)
-})
+module.exports = { appListen }
 
 // Servidor WebSocket
-const socketServer = new Server(serverHttp)
+// const socketServer = new Server(serverHttp)
 
-socketServer.on('connection', async (socket) => {
-    console.log("nuevo cliente conectado")
-    const products = await product.getProducts()
+// socketServer.on('connection', async (socket) => {
+//     logger.info("nuevo cliente conectado")
+//     const products = await product.get()
 
-    socketServer.emit('listaDeProductos', products)
-    socket.on("realTimeProducts", async data => {
-        await product.addProduct(data)
-    })
-})
+//     socketServer.emit('listaDeProductos', products)
+//     socket.on("realTimeProducts", async data => {
+//         await product.addProduct(data)
+//     })
+// })
 

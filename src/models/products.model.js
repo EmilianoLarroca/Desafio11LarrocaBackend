@@ -9,6 +9,9 @@ const productsSchema = new Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+    },
     stock: {
         type: Number,
         required: true
@@ -18,7 +21,7 @@ const productsSchema = new Schema({
         required: true
     },
     thumbnail: {
-        type: String,
+        type: Array,
         required: true
     },
     IsActive: {

@@ -6,6 +6,8 @@ const cartsRouter = require('./apis/carts.router.js')
 const ordersRouter = require('./apis/orders.router.js')
 const viewsRouter = require('./views.router.js')
 const emailRouter = require('./apis/mail.router.js')
+const generateUsersRouter = require('./apis/generateFaker.router.js')
+const { logger } = require('../utils/logger.js')
 
 const router = Router()
 
@@ -16,6 +18,7 @@ router.use('/api/users', userRouter) //Usuarios (CRUD de user)
 router.use('/api/orders', ordersRouter) //Ordenes
 router.use('/api/sessions', sessionRouter) //Cookies (Login - Register - Logout)
 router.use('/api/', emailRouter)
+router.use('/api/', generateUsersRouter)
 
 //Cualquier ruta que no este definida, te lleva a esta ruta (COMODIN se le llama a este ruteo)
 router.use('*', (req, res)=>{
@@ -23,7 +26,7 @@ router.use('*', (req, res)=>{
 })
 
 router.use(( err, req, res, next)=>{
-    console.error(err.stack)
+    logger.error(err.stack)
     res.status(500).send('error de server')
 })
 

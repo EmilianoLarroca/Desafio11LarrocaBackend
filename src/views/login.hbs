@@ -1,12 +1,24 @@
-<section>
-    <h1>Login</h1>
-    <form action="/api/sessions/login" method="POST" class="form-group">
-        <input type="text" name="email" placeholder="email">
-        <br>
-        <input type="password" name="password" placeholder="password">
-        <br>
-        <button class="btn btn-dark mt-3">Ingresar</button>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logueo</title>
+</head>
+<body class="cuerpo">
+        <h1 class="tituloLogin">Login</h1>
+            <div class="caja" >
+            <form action="/api/sessions/login" method="POST" class="form-group">
+                <input type="text" name="email" placeholder="email" class="inputLogin">
+                <br>
+                <input type="password" name="password" placeholder="password" class="inputLogin">
+                <br>
+                <button class="btn btn-dark mt-3">Ingresar</button>
+                <a href="/api/sessions/github" class="btn btn-dark mt-3">GitHub</a>
     </form>
-    <a href="/api/sessions/github" class="btn btn-dark mt-3">GitHub</a>
-</section>
-
+    </div>
+<script src="/socket.io/socket.io.js"></script> 
+<script src="/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

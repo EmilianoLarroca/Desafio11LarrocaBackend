@@ -3,9 +3,10 @@ const { orderModel } = require('../../models/orders.model')
 const dotenv = require('dotenv')
 const { program } = require('../../utils/commander')
 const { MongoSingleton } = require('../../utils/mongoSingleton')
+const { logger } = require('../../utils/logger')
 
 const { mode } = program.opts()
-console.log('mode config: ', mode)
+logger.info('mode config: ', mode)
 
 dotenv.config({
     path: mode === 'production' ? './.env.production' : './.env.development'
@@ -32,7 +33,7 @@ const connectDb = async () => {
         // console.log('Base de dato funcionando')
 
     } catch (error) {
-        console.log(error)
+        logger.error(error)
     }
     
 }

@@ -1,4 +1,5 @@
-const {messageModel} = require('../../models/messages.model.js')
+const {messageModel} = require('../../models/messages.model.js');
+const { logger } = require('../../utils/logger.js');
 
 class MessageManager {
     getMessages = async () => {
@@ -25,12 +26,12 @@ class MessageManager {
   
   deleteAllMessages = async () => {
     try {
-        console.log("Borrando todos los mensajes...");
+        logger.info("Borrando todos los mensajes...");
         const result = await messageModel.deleteMany({});
-        console.log("Mensajes eliminados:", result);
+        logger.info("Mensajes eliminados:", result);
         return result;
     } catch (error) {
-        console.error("Error al eliminar mensajes:", error);
+        logger.error("Error al eliminar mensajes:", error);
         return error;
     }
 }

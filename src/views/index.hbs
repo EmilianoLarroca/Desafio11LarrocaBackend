@@ -1,14 +1,25 @@
-<div>
-    <h1>Bienvenidos, estos son nuestros productos:</h1>
-</div>
-<div>
-    {{#each productos}}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <title>Inicio</title>
+</head>
+<body class="cajaProducts">
+        <h1 class="titulo1">Bienvenidos, estos son nuestros productos:</h1>
+<div class="contenedorProducts">
+    {{#each productos }}
+        <p>{{this.thumbnail}}</p>
         <h2>{{this.title}}</h2>
-        <p>Precio: {{this.price}}</p>
-        <p>Descripcion: {{this.description}}</p>
-        <p>Cantidad: {{this.stock}}</p>
-        <p>Codigo: {{this.code}}</p>
+        <p class="contenido"><strong>Descripcion: </strong>{{this.description}}</p>
+        <p class="contenido"><strong>Categoria: </strong>{{this.category}}</p>
+        <p class="contenido"><strong>Stock: </strong>{{this.stock}}</p>
+        <p class="contenido"><strong>Codigo: </strong>{{this.code}}</p>
+        <p class="contenido"><strong>Precio: </strong>${{this.price}}</p>
     {{/each}}
 </div>
 <script src="/socket.io/socket.io.js"></script> 
 <script src="/js/index.js"></script>
+</body>
+</html>

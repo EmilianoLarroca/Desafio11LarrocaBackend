@@ -9,7 +9,8 @@ Content-Type: application/json
 {
     "first_name": "Emiliano",
     "last_name": "Larroca",
-    "email": "e@gmail.com"
+    "email": "e@gmail.com",
+    "password" "123"
 }
 
 ###
@@ -42,11 +43,12 @@ POST http://localhost:8080/api/products
 Content-Type:  application/json
 
 {
-    "title": "producto2",
-    "price": 50,
-    "category": "verdura",
-    "stock": 5,
-    "thumbnail": "imagen2",
+    "title": "Manzana",
+    "description": "Fruta Roja",
+    "price": 100,
+    "category": "Fruta",
+    "stock": 15,
+    "thumbnail": "https://ibb.co/2yCdLWC",
     "IsActive": "true"
 }
 

@@ -1,14 +1,26 @@
-<section>
-    <h1>Registro</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="cuerpo">
+    <h1 class="tituloLogin">Register</h1>
+    <div class="caja">
     <form action="/api/sessions/register" method="POST" class="form-group">
     <br>
-        <input type="text" name="first_name" placeholder="first_name">
+        <input type="text" name="first_name" placeholder="first_name" class="inputLogin">
         <br>
-        <input type="text" name="last_name" placeholder="last_name">
+        <input type="text" name="last_name" placeholder="last_name" class="inputLogin">
         <br>
-        <input type="text" name="email" placeholder="email">
+        <input type="text" name="email" placeholder="email" class="inputLogin">
         <br>
-        <input type="password" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password" class="inputLogin">
         <button class="btn btn-dark">Enviar</button>
     </form>
-</section>
+</div>
+<script src="/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

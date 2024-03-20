@@ -42,7 +42,7 @@ exports.initializePassport = () => {
     }, async (accessToken, refreshToken, profile, done)=> {
         try {
             console.log(profile)
-            let user = await userService.getUsersBy({email: profile._json.email})
+            let user = await userService.getBy({email: profile._json.email})
             if(!user) {
                 let userNew = {
                     first_name: profile.username,
