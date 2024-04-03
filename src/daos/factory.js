@@ -1,5 +1,4 @@
 const { configObject: {persistencia} } = require('../daos/config/configServer.js')
-// const UserDaoMongo = require('./Mongo/userDaoMongo.js')
 
 let UserDao
 let ProductDao
@@ -7,7 +6,7 @@ console.log('La persistencia actual es:', persistencia)
 
 switch (persistencia) {
     case 'MONGO':
-        const ProductDaoMongo = require('./Mongo/productManagerMongo.js')
+        const ProductDaoMongo = require('./Mongo/productDaoMongo.js')
         ProductDao = ProductDaoMongo
 
         const UserDaoMongo = require('./Mongo/userDaoMongo.js')

@@ -1,4 +1,4 @@
-const { ProductDaoMongo } = require("../daos/Mongo/productManagerMongo");
+const { ProductDaoMongo } = require("../daos/Mongo/productDaoMongo");
 const { ProductRepository } = require("./products.repository");
 
 

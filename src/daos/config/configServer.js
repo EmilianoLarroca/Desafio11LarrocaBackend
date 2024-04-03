@@ -1,12 +1,12 @@
 const {connect} = require('mongoose')
-const { orderModel } = require('../../models/orders.model')
+const { orderModel } = require('../Mongo/models/orders.model')
 const dotenv = require('dotenv')
 const { program } = require('../../utils/commander')
 const { MongoSingleton } = require('../../utils/mongoSingleton')
 const { logger } = require('../../utils/logger')
 
 const { mode } = program.opts()
-logger.info('mode config: ', mode)
+console.log('mode config: ', mode)
 
 dotenv.config({
     path: mode === 'production' ? './.env.production' : './.env.development'

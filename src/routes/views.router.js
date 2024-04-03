@@ -1,8 +1,8 @@
 const { Router } = require('express') 
 // const ProductManager = require('../daos/File/productManager.js')
-const { ProductDaoMongo } = require('../daos/Mongo/productManagerMongo.js')
+const { ProductDaoMongo } = require('../daos/Mongo/productDaoMongo.js')
 const { MessageManager } = require('../daos/Mongo/messagesManagerMongo.js')
-const { usersModel } = require('../models/users.model.js')
+const { usersModel } = require('../daos/Mongo/models/users.model.js')
 const { authetication } = require('../middlewars/atuh.middlewars.js')
 
 const router = Router()

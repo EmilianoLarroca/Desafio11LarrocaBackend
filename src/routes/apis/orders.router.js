@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { orderModel } = require('../../models/orders.model')
+const { orderModel } = require('../../daos/Mongo/models/orders.model')
 
 
 const router = Router()

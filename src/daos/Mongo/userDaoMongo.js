@@ -1,4 +1,4 @@
-const {usersModel} = require('../../models/users.model.js')
+const {usersModel} = require('./models/users.model.js')
 
 class UserDaoMongo {
     constructor(){

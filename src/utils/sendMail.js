@@ -10,11 +10,12 @@ const transport = nodemailer.createTransport({
     }
 })
 
+const from = 'Servicio de mensajeria del server ecommerce <emixlarroca05@gmail.com>'
 
-exports.sendMail = async (destino, subject, html) => {
+const sendMail = async (destino, subject, html) => {
     return await transport.sendMail({
         //De (Quien lo envia)
-        from: 'Este mail lo envia <emixlarroca05@gmail.com>',
+        from,
         //Para (Quien lo recibe)
         to: destino,
         //Asunto
@@ -28,4 +29,8 @@ exports.sendMail = async (destino, subject, html) => {
             cid: 'GGp'
         }]
     })
+}
+
+module.exports = {
+    sendMail
 }

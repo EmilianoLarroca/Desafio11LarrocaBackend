@@ -1,4 +1,4 @@
-const {messageModel} = require('../../models/messages.model.js');
+const {messageModel} = require('./models/messages.model.js');
 const { logger } = require('../../utils/logger.js');
 
 class MessageManager {
