@@ -1,4 +1,4 @@
-<html lang='es'>
+{{!-- <html lang='es'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
@@ -18,6 +18,42 @@
         <p class='contenido'><strong>Precio: </strong>${{this.price}}</p>
       {{/each}}
     </div>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='/js/index.js'></script>
+  </body>
+</html> --}}
+
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='../public/css/index.css' />
+    <title>Inicio</title>
+  </head>
+  <body >
+    <section>
+      <div class="container">
+        {{#each productos}}
+        <div class="card">
+          <div class="product-image">
+            <img src="" alt="">
+          </div>
+          <div class="product-info">
+            <h4>{{this.title}}</h4>
+            <p><strong>Descripcion: </strong>{{this.description}}</p>
+            <p><strong>Categoria: </strong>{{this.category}}</p>
+            <p><strong>Stock: </strong>{{this.stock}}</p>
+            <p><strong>Codigo: </strong>{{this.code}}</p>
+            <p><strong>Precio: </strong>${{this.price}}</p>
+          </div>
+          <div class="btn">
+            <button type="button">Agregar al carrito</button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+</section>
+
     <script src='/socket.io/socket.io.js'></script>
     <script src='/js/index.js'></script>
   </body>

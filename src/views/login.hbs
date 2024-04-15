@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -21,5 +21,61 @@
 <script src="/socket.io/socket.io.js"></script> 
 <script src="/js/login.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://kit.fontawesome.com/e9d0268112.js" crossorigin="anonymous"></script>
+</body>
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+
+<section>
+    <div class="contenedor">
+        <div class="formulario">
+            <form action="/api/sessions/login" method="POST" class="form-group" id="loginForm">
+                <h2>Iniciar Sesión</h2>
+
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" class="inputLogin">
+                    <label for="#">Email</label>
+                </div>
+
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" class="inputLogin">
+                    <label for="#">Contraseña</label>
+                </div>
+
+                <div class="olvidar">
+                    <label for="#">
+                        <input type="checkbox">
+                        <a href="#">Recordar</a>
+                    </label>
+                </div>   
+            </form>
+
+            <div>
+                <button class="btn btn-dark">Acceder</button>
+                <button><a href="/api/sessions/github" class="fa-brands fa-github btn btn-dark ">GitHub</a></button>
+
+                <div class="registrar">
+                    <p>No tengo cuenta <a href="/register">Crear una</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/socket.io/socket.io.js"></script> 
+<script src="/js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://kit.fontawesome.com/e9d0268112.js" crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -8,6 +8,9 @@ const viewsRouter = require('./views.router.js')
 const emailRouter = require('./apis/mail.router.js')
 const generateUsersRouter = require('./apis/generateFaker.router.js')
 const { logger } = require('../utils/logger.js')
+//Importaciones de Swagger
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUiExpress = require('swagger-ui-express')
 
 const router = Router()
 
@@ -19,6 +22,22 @@ router.use('/api/orders', ordersRouter) //Ordenes
 router.use('/api/sessions', sessionRouter) //Cookies (Login - Register - Logout)
 router.use('/api/', emailRouter)
 router.use('/api/', generateUsersRouter)
+
+/*-------------CONFIG-SWAGGER-------------*/
+const swaggerOptions = {
+    definition: {
+      openapi: '3.0.1',
+      info: {
+        title: 'Documentación Backend',
+        description: 'API Docs Backend'
+      }
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+  }
+  
+  const specs = swaggerJsDoc(swaggerOptions)
+  router.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+/*-------------CONFIG-SWAGGER-------------*/
 
 //Cualquier ruta que no este definida, te lleva a esta ruta (COMODIN se le llama a este ruteo)
 router.use('*', (req, res)=>{

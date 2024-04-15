@@ -19,8 +19,9 @@ const cors = require('cors');
 const { handleError } = require('./middlewars/error/handlleError.js');
 const { addLogger, logger } = require('./utils/logger.js');
 
-const app = express();
 
+
+const app = express();
 const product = new ProductDaoMongo();
 
 app.use(express.json());
@@ -67,6 +68,8 @@ const appListen = () => {
     logger.info(`Escuchando puerto http://localhost:${PORT}`);
   });
 };
+
+
 
 module.exports = { appListen };
 
