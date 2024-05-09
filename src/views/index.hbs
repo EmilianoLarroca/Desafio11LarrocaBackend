@@ -36,24 +36,24 @@
         {{#each productos}}
         <div class="card">
           <div class="product-image">
-            <img src="" alt="">
+            <img src="{{this.thumbnail}}" alt="">
           </div>
           <div class="product-info">
-            <h4>{{this.title}}</h4>
+            <h4><strong>{{this.title}}</strong></h4>
             <p><strong>Descripcion: </strong>{{this.description}}</p>
             <p><strong>Categoria: </strong>{{this.category}}</p>
             <p><strong>Stock: </strong>{{this.stock}}</p>
             <p><strong>Codigo: </strong>{{this.code}}</p>
             <p><strong>Precio: </strong>${{this.price}}</p>
           </div>
-          <div class="btn">
-            <button type="button">Agregar al carrito</button>
-          </div>
+            <div class="btn">
+              <button type="submit">Agregar al carrito</button>
+            </div>
         </div>
         {{/each}}
       </div>
+      
 </section>
-
     <script src='/socket.io/socket.io.js'></script>
     <script src='/js/index.js'></script>
   </body>

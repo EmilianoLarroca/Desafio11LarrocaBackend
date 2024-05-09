@@ -11,105 +11,104 @@ paths:
             application/json:
               schema:
                 type: array
-                items: 
+                items:
                   $ref: '#/components/schemas/Products'
-        "500":  
-          description: error interno del server, usualmente por query defectuosa. 
+        "500":
+          description: error interno del server, usualmente por query defectuosa.
     post:
       summary: Crea un nuevo Producto
-      tags: 
+      tags:
         - Productos
-      requestBody: 
+      requestBody:
         required: true
         content:
           application/json:
-            schema: 
+            schema:
               $ref: "#/components/requestBodies/updateProducto"
-      responses: 
-        "201": 
-          description: El Producto fue creado correctamente  
+      responses:
+        "201":
+          description: El Producto fue creado correctamente
 
   /api/users/{uid}:
     get:
       summary: Obtiene un Producto a partir de un uid
-      tags: 
+      tags:
         - Producto
-      parameters: 
+      parameters:
         - name: uid
           in: path
           required: true
           description: El id del Producto que desea solicitar
-          schema: 
+          schema:
             type: string
-      responses: 
+      responses:
         "200":
           description: El Producto fue obtenido correctamente
-          content: 
+          content:
             application/json:
-              schema: 
+              schema:
                 $ref: "#/components/schemas/Products"
 
-
 components:
-  schemas: 
-    Products: 
+  schemas:
+    Products:
       type: object
-      properties: 
-        _id: 
+      properties:
+        _id:
           type: string
           description: Id autogenerados de Mogno.
-        title: 
+        title:
           type: string
           description: Nombre del producto.
-        category: 
+        category:
           type: string
           description: Categoria del producto.
-        description: 
+        description:
           type: string
           description: Descripción del producto.
-        stock: 
+        stock:
           type: number
           description: Cantidades del producto.
-        price: 
+        price:
           type: number
           description: Precio del producto.
-        thumbnail: 
+        thumbnail:
           type: string
           description: Imagen del producto.
-      example: 
+      example:
         _id: ObjectId("fajsñldf-.sadfjasa.asdfjasldfa")
         title: Banana
         category: Fruta
         description: Fruta amarilla
         stock: 50
         price: 500
-        thumbnail: url 
-  requestBodies: 
-    updateProducto: 
+        thumbnail: url
+  requestBodies:
+    updateProducto:
       type: object
-      properties:  
-        title: 
+      properties:
+        title:
           type: string
           description: Nombre del producto.
-        category: 
+        category:
           type: string
           description: Categoria del producto.
-        description: 
+        description:
           type: string
           description: Descripción del producto.
-        stock: 
+        stock:
           type: number
           description: Cantidades del producto.
-        price: 
+        price:
           type: number
           description: Precio del producto.
-        thumbnail: 
+        thumbnail:
           type: string
           description: Imagen del producto.
-      example: 
+      example:
         title: Manzana
         category: Fruta
         description: Fruta roja
         stock: 50
-        price: 500 
+        price: 500
         thumbnail: url

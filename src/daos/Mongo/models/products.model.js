@@ -21,7 +21,7 @@ const productsSchema = new Schema({
         required: true
     },
     thumbnail: {
-        type: Array,
+        type: String,
         required: true
     },
     IsActive: {

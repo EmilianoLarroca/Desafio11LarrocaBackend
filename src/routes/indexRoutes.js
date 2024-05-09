@@ -6,6 +6,7 @@ const cartsRouter = require('./apis/carts.router.js')
 const ordersRouter = require('./apis/orders.router.js')
 const viewsRouter = require('./views.router.js')
 const emailRouter = require('./apis/mail.router.js')
+const panelRouter = require('./apis/panel.router.js')
 const generateUsersRouter = require('./apis/generateFaker.router.js')
 const { logger } = require('../utils/logger.js')
 //Importaciones de Swagger
@@ -15,6 +16,7 @@ const swaggerUiExpress = require('swagger-ui-express')
 const router = Router()
 
 router.use('/', viewsRouter) //Views
+router.use('/panel', panelRouter) //Panel de Administrador
 router.use('/api/products', productsRouter) //Productos
 router.use('/api/carts', cartsRouter) //Carrito
 router.use('/api/users', userRouter) //Usuarios (CRUD de user)

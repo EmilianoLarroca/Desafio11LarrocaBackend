@@ -52,10 +52,19 @@ section{
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    background: url(fondoProductos.jpg) no-repeat;
+    background: url(https://i.postimg.cc/j2bf24CB/fondo-Productos.jpg) no-repeat;
     background-position: center;
     background-size: cover;
 }
+
+.img-section {
+    width: 50%;
+
+    img {
+      border-radius: 2em;
+      width: 100%;
+    }
+  }
 
 .container{
     width: 90%;
