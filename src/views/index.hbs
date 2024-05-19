@@ -39,15 +39,16 @@
             <img src="{{this.thumbnail}}" alt="">
           </div>
           <div class="product-info">
-            <h4><strong>{{this.title}}</strong></h4>
-            <p><strong>Descripcion: </strong>{{this.description}}</p>
-            <p><strong>Categoria: </strong>{{this.category}}</p>
-            <p><strong>Stock: </strong>{{this.stock}}</p>
-            <p><strong>Codigo: </strong>{{this.code}}</p>
-            <p><strong>Precio: </strong>${{this.price}}</p>
+            <h4 ><strong class="titleProducts">{{this.title}}</strong></h4>
+            <p><strong class="descriptionProducts">Descripcion: </strong>{{this.description}}</p>
+            <p><strong class="pProducts">Categoria: </strong>{{this.category}}</p>
+            <p><strong class="pProducts">Stock: </strong>{{this.stock}}</p>
+            <p><strong class="pProductss">Codigo: </strong>{{this._id}}</p>
+            <p><strong class="pProducts">Precio: </strong>${{this.price}}</p>
           </div>
             <div class="btn">
               <button type="submit">Agregar al carrito</button>
+              <a href="/product/{{this._id}}" class="btn btn-outline-dark text-center m-2">Ver detalle</a>
             </div>
         </div>
         {{/each}}

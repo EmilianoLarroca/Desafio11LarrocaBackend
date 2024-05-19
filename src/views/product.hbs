@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+</head>
+<body>
+    <section>
+<div class="container">
+    <div class="row m-4 p-2">
+        <div class="card text-center">
+            {{#each productos}}
+            <h1 class="card-header">{{this.title}}</h1>
+            <div class="card-body">
+                    <div class="product-image">
+                        <img src="{{this.thumbnail}}" alt="">
+                    </div>
+                    <p><strong>Descripcion: </strong>{{this.description}}</p>
+                    <p><strong>Categoria: </strong>{{this.category}}</p>
+                    <p><strong>Stock: </strong>{{this.stock}}</p>
+                    <p><strong>Codigo: </strong>{{this._id}}</p>
+                    <p><strong>Precio: </strong>${{this.price}}</p>               
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-dark" onClick="agregarProductoAlCarrito('{{this._id}}')">Agregar al carrito</button>
+            </div>
+            <div class="card-footer">
+                <a href="/" class="btn btn-outline-dark">Seguir comprando</a>
+            </div>
+            {{/each}}
+        </div>
+    </div>  
+</div>
+</section>
+<script src='/js/index.js'></script>
+</body>
+</html>
+

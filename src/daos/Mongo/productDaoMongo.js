@@ -10,7 +10,8 @@ class ProductDaoMongo {
     }
 
     async getBy(filter){
-        return await this.model.findOne(filter)
+        console.log(filter)
+        return await this.model.find({_id: filter.uid}).lean()
     }
 
     async create(newProduct){

@@ -1,12 +1,11 @@
 class CartService {
-
     constructor(cartDao){
         this.cartDao = cartDao
     }
 
     async getCarts(){
         try {
-            let res = await this.cartDao.get()
+            let res = await this.cartDao.getCarts()
             console.log(res)
             return res
         } catch (error) {
@@ -14,17 +13,17 @@ class CartService {
         }
     } 
 
-    async getCart(cid){
+    async getCartById(cid){
         try {
-            return await this.cartDao.getBy(cid)           
+            return await this.cartDao.getCartById(cid)           
         } catch (error) {
             return new Error(error)
         }
     } 
 
-    async createCart(userEmail){
+    async createCart(){
         try {
-            return await this.cartDao.create(userEmail)            
+            return await this.cartDao.createCart()            
         } catch (error) {
             return new Error(error)
         }
@@ -32,7 +31,7 @@ class CartService {
 
     async addProductToCart(cid, product){
         try {
-            return await this.cartDao.update(cid, product)
+            return await this.cartDao.addProductToCart(cid, product)
         } catch (error) {
             return new Error(error)
         }
@@ -40,7 +39,7 @@ class CartService {
 
     async deleteProductFromCart(cid, pid){
         try {
-            return await this.cartDao.deleteItem(cid, pid)
+            return await this.cartDao.deleteProductFromCart(cid, pid)
         } catch (error) {
             return new Error(error)
         }
@@ -48,7 +47,7 @@ class CartService {
 
     async deleteCart(cid){
         try {
-            return await this.cartDao.delete(cid)
+            return await this.cartDao.deleteCart(cid)
         } catch (error) {
             return new Error(error)
         }

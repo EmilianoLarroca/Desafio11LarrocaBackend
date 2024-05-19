@@ -43,22 +43,22 @@ POST http://localhost:8080/api/products
 Content-Type:  application/json
 
 {
-    "title": "Manzana4",
-    "description": "Fruta Roja",
-    "price": 100,
-    "category": "Fruta",
-    "stock": 15,
-    "thumbnail": "https://postimg.cc/VrKvHMqF",
+    "title": "ABSOLUT WATERMELON – VODKA  700 ML",
+    "description": "Es producido del trigo de invierno, un grano de trigo robusto que da su carácter de grano liso al VODKA.",
+    "price": 24000,
+    "category": "Bebida Alcoholica",
+    "stock": 17,
+    "thumbnail": "https://i.postimg.cc/ykpcNyXn/VODKA-6.jpg",
     "IsActive": "true"
 }
 
 ###
-POST http://localhost:8080/api/carts
-Content-Type: : application/json
+GET http://localhost:8080/api/carts
 
-{
-    "products": [{"product": "658267cec06f43584aa0d9c6"}, {"product": "65826bd4c3db4deeaf7cedfe",}]
-}
+
+###
+POST http://localhost:8080/api/carts
+
 
 ###
 GET http://localhost:8080/api/carts/659df1782f8baeb102cf50e4

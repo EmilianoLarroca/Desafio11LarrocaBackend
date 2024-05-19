@@ -2,29 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
 }
 
 body {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #141C29;
-    padding-top: 80px;
+    background-color: #142917;
 }
 
-h1 {
+.h1 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin: 30px 0px;
 }
-
-img {
-    width: 320px;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 20px 20px 0px 0px;
+.labelForm{
+    color: #ffffff;
 }
 
-header {
+.header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +28,7 @@ header {
     width: 100%;
 }
 
-.contenedor {
+.contenedor2 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -44,13 +38,13 @@ header {
     gap: 40px;
 }
 
-.contenedor>div {
+.contenedor2>div {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     background-color: #2D4263;
-    height: 400px;
-    width: 400px;
+    height: 580px;
+    width: 420px;
     border-radius: 20px;
     flex-direction: column;
     padding-top: 35px;
@@ -58,13 +52,13 @@ header {
     flex: 1 1 300px;
 }
 
-.contenedor>div>form {
+.contenedor2>div>form {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.contenedor>div>form>input,
+.contenedor2>div>form>input,
 select {
     border-radius: 5px;
     border: none;
@@ -75,7 +69,7 @@ option{
     color: black;
 }
 
-.contenedor .button {
+.contenedor2 .button {
     margin-top: 20px;
     height: 30px;
     border-radius: 7px;
@@ -167,4 +161,20 @@ option{
 
 .noExsiteError::after {
     content: 'Este elemento no existe';
+}
+
+.h2t {
+    color: aliceblue;
+}
+
+.headerCRUD {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 1vh;
+        background: url(https://i.postimg.cc/j2bf24CB/fondo-Productos.jpg) no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: aliceblue;
 }

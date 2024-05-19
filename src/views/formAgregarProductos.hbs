@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
-
-    <link rel="stylesheet" href="../public/css/formCRUD.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,66 +18,75 @@
 </head>
 
 <body>
-    <header id="header">
-        <h1>Productos</h1>
+    <header class="headerCRUD" id="header">
+        <h1 class="h1">CRUD de Productos</h1>
     </header>
-
+<section>
     <main>
-        <div class="contenedor">
+        <div class="contenedor2">
             <!-- Añadir -->
             <div class="añadir">
-                <h2>Añadir</h2>
-                <form action="/api/sessions/panel" method="POST" class="" id="">
-                    <label>Nombre del producto</label>
-                    <input type="text" id="productoAñadir" name="nombreDelProducto">
+                <h2 class="h2t">Añadir</h2>
+                <form action="/panelAdd" method="POST" class="" id="">
+                    <label class="labelForm">Nombre del producto</label>
+                    <input type="text" id="productoAñadir" name="title">
 
-                    <label>Valor del producto</label>
-                    <input type="number" id="valorAñadir">
+                    <label class="labelForm">Precio del producto</label>
+                    <input type="number" id="valorAñadir" name="price">
 
-                    <label>Existencia</label>
-                    <input type="number" id="existenciaAñadir">
+                    <label class="labelForm">Stock</label>
+                    <input type="number" id="existenciaAñadir" name="stock">
 
-                    <label>Url Imagen</label>
-                    <input type="text" id="ImagenAñadir">
+                    <label class="labelForm">Categoria</label>
+                    <input type="text" id="Category" name="category">
 
-                    <input class="button" type="button" id="botonAñadir" value="Añadir">
+                    <label class="labelForm">Url Imagen</label>
+                    <a href="https://postimg.cc/gallery/tgXC50N/d864d8e6" class="btn btn-dark">Pagina para subir la imagen</a>
+                    <input type="text" id="ImagenAñadir" name="thumbnail">
+
+                    <input class="button" type="submit" id="botonAñadir" value="Añadir">
                 </form>
             </div>
             <!-- Editar -->
             <div class="editar">
-                <h2>Editar</h2>
-                <form action="/api/sessions/panel" method="POST" class="" id="">
-                    <label>Nombre del producto</label>
+                
+                <h2 class="h2t">Editar</h2>
+                <form action="/panel/update" method="POST" class="" id="">
+                    <label class="labelForm">Nombre del producto</label>
                     <select id="productoEditar">
-                        <option value="">---</option>
+                        {{#each productos}}
+                            <option value="">{{this.title}}</option>
+                        {{/each}}
                     </select>
 
-                    <label>Atributo</label>
+                    <label class="labelForm">Atributo</label>
                     <select id="atributoEditar">
                         <option value="">---</option>
                     </select>
 
-                    <label>Nuevo valor</label>
+                    <label class="labelForm">Nuevo valor</label>
                     <input type="text" id="nuevoAtributo">
 
-                    <input class="button" type="button" id="botonEditar" value="Editar">
+                    <input class="button" type="submit" id="botonEditar" value="Editar">
                 </form>
             </div>
 
             <!-- Eliminar -->
             <div class="eliminar">
-                <h2>Eliminar</h2>
+                <h2 class="h2t">Eliminar</h2>
 
-                <form action="/api/sessions/panel" method="POST" class="" id="">
-                    <label>Nombre del producto</label>
+                <form action="/panel/delete" method="POST" class="" id="">
+                    <label class="labelForm">Nombre del producto</label>
                     <select id="productoEliminar">
-                        <option value="">---</option>
+                        {{#each productos}}
+                            <option value="{{this.id}}">{{this.title}}</option>
+                        {{/each}}
                     </select>
-                    <input class="button" type="button" id="botonEliminar" value="Eliminar">
+                    <input class="button" type="submit" id="botonEliminar" value="Eliminar">
                 </form>
             </div>
         </div>
-
+        
         <!-- Mostrar el mensaje -->
         <div class="contenedorMensaje">
             <div id="mensaje"></div>
@@ -88,15 +94,11 @@
 
         <!-- Productos -->
         <div class="contenedorProductos">
-            <h2>Productos</h2>
-            <div class="mostrarProductos" id="mostrarProductos">
-                
-            </div>
-        </div>
+            <h2 class="h2t">Productos</h2>
+            <div class="mostrarProductos" id="mostrarProductos"> </div>
         </div>
     </main>
-
+</section>
     <script src="admin.js"></script>
 </body>
-
 </html>

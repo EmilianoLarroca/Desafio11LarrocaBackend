@@ -16,7 +16,7 @@ const swaggerUiExpress = require('swagger-ui-express')
 const router = Router()
 
 router.use('/', viewsRouter) //Views
-router.use('/panel', panelRouter) //Panel de Administrador
+router.use('/api/panel', panelRouter) //Panel de Administrador
 router.use('/api/products', productsRouter) //Productos
 router.use('/api/carts', cartsRouter) //Carrito
 router.use('/api/users', userRouter) //Usuarios (CRUD de user)
